@@ -288,13 +288,15 @@ void SystemTask::Work() {
               ReloadIdleTimer();
             }
             displayApp.PushMessage(Pinetime::Applications::Display::Messages::NewNotification);
+          } else {
+            motorController.RunForDuration(1000);
           }
           break;
         case Messages::OnTimerDone:
           if (state == SystemTaskState::Sleeping) {
             GoToRunning();
           }
-          motorController.RunForDuration(35);
+          motorController.RunForDuration(1000);
           displayApp.PushMessage(Pinetime::Applications::Display::Messages::TimerDone);
           break;
         case Messages::SetOffAlarm:
@@ -402,7 +404,7 @@ void SystemTask::Work() {
               GoToRunning();
               displayApp.PushMessage(Pinetime::Applications::Display::Messages::Clock);
             }
-            motorController.RunForDuration(35);
+            motorController.RunForDuration(1000);
           }
           break;
         case Messages::OnNewHalfHour:
@@ -414,12 +416,12 @@ void SystemTask::Work() {
               GoToRunning();
               displayApp.PushMessage(Pinetime::Applications::Display::Messages::Clock);
             }
-            motorController.RunForDuration(35);
+            motorController.RunForDuration(1000);
           }
           break;
         case Messages::OnChargingEvent:
           batteryController.ReadPowerState();
-          motorController.RunForDuration(15);
+          motorController.RunForDuration(150);
           ReloadIdleTimer();
           if (state == SystemTaskState::Sleeping) {
             GoToRunning();
@@ -435,7 +437,7 @@ void SystemTask::Work() {
           if (state == SystemTaskState::Sleeping) {
             GoToRunning();
           }
-          motorController.RunForDuration(35);
+          motorController.RunForDuration(1000);
           displayApp.PushMessage(Pinetime::Applications::Display::Messages::ShowPairingKey);
           break;
         case Messages::BleRadioEnableToggle:

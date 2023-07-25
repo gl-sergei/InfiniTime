@@ -42,6 +42,7 @@ set(SDK_SOURCE_FILES
         "${NRF5_SDK_PATH}/modules/nrfx/drivers/src/nrfx_gpiote.c"
         "${NRF5_SDK_PATH}/modules/nrfx/soc/nrfx_atomic.c"
         "${NRF5_SDK_PATH}/modules/nrfx/drivers/src/nrfx_saadc.c"
+        "${NRF5_SDK_PATH}/modules/nrfx/drivers/src/nrfx_pwm.c"
 
         # FreeRTOS
         ${NRF5_SDK_PATH}/external/freertos/source/croutine.c
@@ -790,7 +791,7 @@ set(COMMON_FLAGS -MP -MD -mthumb -mabi=aapcs -Wall -Wextra -Warray-bounds=2 -Wfo
 add_definitions(-DCONFIG_GPIO_AS_PINRESET)
 add_definitions(-DNIMBLE_CFG_CONTROLLER)
 add_definitions(-DOS_CPUTIME_FREQ)
-add_definitions(-DNRF52 -DNRF52832 -DNRF52832_XXAA -DNRF52_PAN_74 -DNRF52_PAN_64 -DNRF52_PAN_12 -DNRF52_PAN_58 -DNRF52_PAN_54 -DNRF52_PAN_31 -DNRF52_PAN_51 -DNRF52_PAN_36 -DNRF52_PAN_15 -DNRF52_PAN_20 -DNRF52_PAN_55 -DBOARD_PCA10040)
+add_definitions(-DNRF52 -DNRF52832 -DNRF52832_XXAA -DNRF52_PAN_74 -DNRF52_PAN_64 -DNRF52_PAN_12 -DNRF52_PAN_58 -DNRF52_PAN_54 -DNRF52_PAN_31 -DNRF52_PAN_51 -DNRF52_PAN_36 -DNRF52_PAN_15 -DNRF52_PAN_20 -DNRF52_PAN_55 -DBOARD_PCA10040 -DNRFX_PWM_ENABLED=1 -DPWM_ENABLED=1 -DPWM0_ENABLED=1)
 add_definitions(-DFREERTOS)
 add_definitions(-D__STACK_SIZE=1024)
 add_definitions(-D__HEAP_SIZE=4096)

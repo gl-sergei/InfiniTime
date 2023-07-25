@@ -7,9 +7,9 @@ namespace Colors {
   static constexpr lv_color_t green = LV_COLOR_MAKE(0x0, 0xb0, 0x0);
   static constexpr lv_color_t lightGray = LV_COLOR_MAKE(0xb0, 0xb0, 0xb0);
 
-  static constexpr lv_color_t bg = LV_COLOR_MAKE(0x5d, 0x69, 0x7e);
-  static constexpr lv_color_t bgAlt = LV_COLOR_MAKE(0x38, 0x38, 0x38);
-  static constexpr lv_color_t bgDark = LV_COLOR_MAKE(0x18, 0x18, 0x18);
+  static constexpr lv_color_t bg = LV_COLOR_MAKE(0x5d / 8, 0x69 / 8, 0x7e / 8);
+  static constexpr lv_color_t bgAlt = LV_COLOR_MAKE(0x38 / 8, 0x38 / 8, 0x38 / 8);
+  static constexpr lv_color_t bgDark = LV_COLOR_MAKE(0x18 / 8, 0x18 / 8, 0x18 / 8);
   static constexpr lv_color_t highlight = green;
 };
 
