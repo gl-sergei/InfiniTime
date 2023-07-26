@@ -209,7 +209,7 @@ void SystemTask::Work() {
     UpdateMotion();
 
     uint8_t msg;
-    if (xQueueReceive(systemTasksMsgQueue, &msg, 100)) {
+    if (xQueueReceive(systemTasksMsgQueue, &msg, GetQueueTimeout())) {
       Messages message = static_cast<Messages>(msg);
       switch (message) {
         case Messages::EnableSleeping:
@@ -596,4 +596,16 @@ void SystemTask::ReloadIdleTimer() {
   }
   xTimerReset(dimTimer, 0);
   xTimerStop(idleTimer, 0);
+}
+
+TickType_t SystemTask::GetQueueTimeout() const {
+  // By default, the timeout on the queue is 100ms.
+  // It's extended to 4s in sleep mode, when no motion based wake up option is enabled.
+  TickType_t timeout = pdMS_TO_TICKS(100);
+  if (state == SystemTaskState::Sleeping && ((!settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist) &&
+                                              !settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::Shake)) ||
+                                             settingsController.GetNotificationStatus() == Controllers::Settings::Notification::Sleep)) {
+    timeout = pdMS_TO_TICKS(4000);
+  }
+  return timeout;
 }
