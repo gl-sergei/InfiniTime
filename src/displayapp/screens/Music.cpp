@@ -19,6 +19,7 @@
 #include "displayapp/screens/Symbols.h"
 #include <cstdint>
 #include "displayapp/DisplayApp.h"
+#include "displayapp/InfiniTimeTheme.h"
 #include "components/ble/MusicService.h"
 #include "displayapp/icons/music/disc.c"
 #include "displayapp/icons/music/disc_f_1.c"
@@ -52,7 +53,7 @@ Music::Music(Pinetime::Applications::DisplayApp* app, Pinetime::Controllers::Mus
 
   lv_style_init(&btn_style);
   lv_style_set_radius(&btn_style, LV_STATE_DEFAULT, 20);
-  lv_style_set_bg_color(&btn_style, LV_STATE_DEFAULT, LV_COLOR_BLUE);
+  lv_style_set_bg_color(&btn_style, LV_STATE_DEFAULT, Colors::bgAlt);
   lv_style_set_bg_opa(&btn_style, LV_STATE_DEFAULT, LV_OPA_50);
 
   btnVolDown = lv_btn_create(lv_scr_act(), nullptr);
