@@ -18,7 +18,7 @@ namespace Pinetime {
       Music,
       Paint,
       Paddle,
-      Twos,
+      QrViewer,
       HeartRate,
       Navigation,
       StopWatch,

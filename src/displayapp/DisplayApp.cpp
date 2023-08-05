@@ -23,11 +23,11 @@
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
 #include "displayapp/screens/Tile.h"
-#include "displayapp/screens/Twos.h"
 #include "displayapp/screens/FlashLight.h"
 #include "displayapp/screens/BatteryInfo.h"
 #include "displayapp/screens/Steps.h"
 #include "displayapp/screens/PassKey.h"
+#include "displayapp/screens/QrViewer.h"
 #include "displayapp/screens/Error.h"
 
 #include "drivers/Cst816s.h"
@@ -451,8 +451,8 @@ void DisplayApp::LoadApp(Apps app, DisplayApp::FullRefreshDirections direction) 
     case Apps::StopWatch:
       currentScreen = std::make_unique<Screens::StopWatch>(this, *systemTask);
       break;
-    case Apps::Twos:
-      currentScreen = std::make_unique<Screens::Twos>(this);
+    case Apps::QrViewer:
+      currentScreen = std::make_unique<Screens::QrViewer>(this, dateTimeController, brightnessController, *systemTask);
       break;
     case Apps::Paint:
       currentScreen = std::make_unique<Screens::InfiniPaint>(this, lvgl, motorController);

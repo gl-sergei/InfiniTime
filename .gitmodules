@@ -9,4 +9,8 @@
 	url = https://github.com/laurencelundblade/QCBOR.git
 [submodule "src/libs/date"]
 	path = src/libs/date
-	url = https://github.com/HowardHinnant/date.git
+  url = https://github.com/HowardHinnant/date.git
+[submodule "src/libs/lv_lib_qrcode"]
+	path = src/libs/lv_lib_qrcode
+	url = https://github.com/gl-sergei/lv_lib_qrcode.git
+
